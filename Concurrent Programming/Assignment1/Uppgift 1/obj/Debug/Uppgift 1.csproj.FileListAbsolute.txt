@@ -1,0 +1,18 @@
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.exe.config
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.exe
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.pdb
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.csprojResolveAssemblyReference.cache
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\obj\Debug\Uppgift_1.Form1.resources
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\obj\Debug\Uppgift_1.Properties.Resources.resources
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.csproj.GenerateResource.Cache
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.exe
+c:\users\markus\documents\visual studio 2013\Projects\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.pdb
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.exe.config
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.exe
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.pdb
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.csprojResolveAssemblyReference.cache
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift_1.Form1.resources
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift_1.Properties.Resources.resources
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.csproj.GenerateResource.Cache
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.exe
+C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.pdb
