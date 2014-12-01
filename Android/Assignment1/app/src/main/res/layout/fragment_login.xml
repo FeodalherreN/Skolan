@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:id="@+id/loginfragment"
+    android:layout_height="match_parent" tools:context="com.example.markus.app1.Login">
+
+
+    <EditText
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtusername"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="103dp"
+        android:hint="Username" />
+
+    <EditText
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtpassword"
+        android:layout_gravity="center_horizontal|top"
+        android:hint="Password"
+        android:layout_below="@+id/txtusername"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Var vänlig logga in."
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logga in"
+        android:id="@+id/btnlogin"
+        android:onClick="LoginClicked"
+        android:layout_below="@+id/txtpassword"
+        android:layout_alignStart="@+id/txtpassword"
+        android:layout_alignEnd="@+id/txtpassword" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrera"
+        android:id="@+id/btnregister"
+        android:onClick="RegisterBtnClicked"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/btnlogin"
+        android:layout_alignEnd="@+id/btnlogin" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Om oss"
+        android:id="@+id/btnabout"
+        android:layout_marginBottom="76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="AboutPressed" />
+
+</RelativeLayout>
