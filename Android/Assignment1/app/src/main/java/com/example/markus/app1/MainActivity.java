@@ -12,7 +12,12 @@ import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -23,15 +28,19 @@ public class MainActivity extends Activity
         AboutFragment.OnFragmentInteractionListener,
         Login.OnFragmentInteractionListener
 {
+    Firebase mFirebase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
+        mFirebase = new Firebase("https://brilliant-heat-3941.firebaseio.com/");
         if (savedInstanceState == null)
         {
             setTitle("ChattmästarN");
             ChangeScreen(new Login(), R.id.loginfragment, R.layout.fragment_login);
         }
     }
+
     public void onFragmentInteraction(Uri uri){
     }
 
@@ -46,12 +55,42 @@ public class MainActivity extends Activity
     }
     public void RegRegClicked(View view)
     {
-        ChangeScreen(new Login(), R.id.loginfragment, R.layout.fragment_login);
+        final EditText username = (EditText)findViewById(R.id.txtregusername);
+        final EditText password = (EditText)findViewById(R.id.txtregpassword);
+        final EditText email = (EditText)findViewById(R.id.txtregemail);
+        mFirebase.createUser(email.getText().toString(),password.getText().toString(), new Firebase.ResultHandler() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(getApplicationContext(),"Registration successful", Toast.LENGTH_SHORT).show();
+                ChangeScreen(new Login(), R.id.loginfragment, R.layout.fragment_login);
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                Toast.makeText(getApplicationContext(),"Registration failed, try again.", Toast.LENGTH_SHORT).show();
+                username.setText("");
+                password.setText("");
+                email.setText("");
+            }
+        });
     }
     public void LoginClicked(View view)
     {
-        Intent i = new Intent(getApplicationContext(), ChatActivity.class);
-        startActivity(i);
+        final EditText username = (EditText)findViewById(R.id.txtusername);
+        final EditText password = (EditText)findViewById(R.id.txtpassword);
+        mFirebase.authWithPassword(username.getText().toString(),password.getText().toString(), new Firebase.AuthResultHandler() {
+                    @Override
+                    public void onAuthenticated(AuthData authData) {
+                        System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+                        Intent i = new Intent(getApplicationContext(), ChatActivity.class);
+                        startActivity(i);
+                    }
+
+                    @Override
+                    public void onAuthenticationError(FirebaseError firebaseError) {
+                        Toast.makeText(getApplicationContext(),"Login failed, try again.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
     public void AboutPressed(View view)
     {

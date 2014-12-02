@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 
 /**
@@ -64,6 +65,12 @@ public class Login extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        final EditText username = (EditText)getActivity().findViewById(R.id.txtusername);
+        final EditText password = (EditText)getActivity().findViewById(R.id.txtpassword);
+        username.setHint("");
+        password.setHint("");
+        username.setText("test@test.se");
+        password.setText("test");
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 

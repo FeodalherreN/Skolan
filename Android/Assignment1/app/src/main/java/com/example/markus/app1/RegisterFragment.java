@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -65,6 +68,15 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        final EditText username = (EditText)container.findViewById(R.id.txtregusername);
+        final EditText password = (EditText)container.findViewById(R.id.txtregpassword);
+        final EditText email = (EditText)container.findViewById(R.id.txtregemail);
+        username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                username.setHint("");
+            }
+        });
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
