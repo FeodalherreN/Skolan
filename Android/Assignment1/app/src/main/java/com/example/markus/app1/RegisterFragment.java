@@ -9,8 +9,13 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 
 /**
@@ -29,6 +34,7 @@ public class RegisterFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
+    private Firebase mFirebase;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
@@ -68,16 +74,38 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final EditText username = (EditText)container.findViewById(R.id.txtregusername);
-        final EditText password = (EditText)container.findViewById(R.id.txtregpassword);
-        final EditText email = (EditText)container.findViewById(R.id.txtregemail);
-        username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        View root = inflater.inflate(R.layout.fragment_register, container, false);
+        Button regbutton = (Button)root.findViewById(R.id.btnregister);
+        final EditText password = (EditText)root.findViewById(R.id.txtregpassword);
+        final EditText email = (EditText)root.findViewById(R.id.txtregemail);
+        regbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                username.setHint("");
+            public void onClick(View v) {
+                String Email = email.getText().toString();
+                String Password = password.getText().toString();
+                if(!Email.isEmpty() || !Password.isEmpty())
+                {
+                    mFirebase  = new Firebase("https://brilliant-heat-3941.firebaseio.com/");
+                    mFirebase.createUser(Email, Password, new Firebase.ResultHandler() {
+                        @Override
+                        public void onSuccess() {
+                            Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
+                            ((MainActivity)getActivity()).ChangeScreen(new Login());
+                        }
+
+                        @Override
+                        public void onError(FirebaseError firebaseError) {
+                            Toast.makeText(getActivity(), "Registration failed, please try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), "Please fill all fields.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        return root;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

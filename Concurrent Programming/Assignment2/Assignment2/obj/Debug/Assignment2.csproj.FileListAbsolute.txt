@@ -16,3 +16,4 @@ C:\Users\Markus\Desktop\Assignment2\Assignment2\obj\Debug\Assignment2.csprojReso
 C:\Users\Markus\Desktop\Assignment2\Assignment2\obj\Debug\Assignment2.Form1.resources
 C:\Users\Markus\Desktop\Assignment2\Assignment2\obj\Debug\Assignment2.Properties.Resources.resources
 C:\Users\Markus\Desktop\Assignment2\Assignment2\obj\Debug\Assignment2.csproj.GenerateResource.Cache
+C:\Users\Markus Olsson\Documents\GitHub\Skolan\Concurrent Programming\Assignment2\Assignment2\bin\Debug\Assignment2.exe.config

@@ -1,6 +1,7 @@
 package com.example.markus.app1;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.net.Uri;
@@ -9,12 +10,21 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -34,6 +44,11 @@ public class Grouplist extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Firebase mFirebase;
+
+    private ArrayList<Group> groups;
+    private ArrayList<String> ids;
+    private GroupAdapter mAdapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,41 +81,104 @@ public class Grouplist extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        getActivity().setTitle("Groups");
+        groups = new ArrayList<Group>();
+        ids = new ArrayList<String>();
+        mAdapter = new GroupAdapter(getActivity(), groups);
+        mFirebase = new Firebase("https://brilliant-heat-3941.firebaseio.com/");
+        mFirebase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s)
+            {
+                Map<String, Object> newGroup = (Map<String,Object>) dataSnapshot.getValue();
+                String newGroupId = dataSnapshot.getKey();
+                String newGroupName = (String)newGroup.get("name");
+                if(!newGroupName.isEmpty()) {
+                    Group grp = new Group();
+                    grp.setName(newGroupName);
+                    groups.add(grp);
+                    ids.add(newGroupId);
+                }
+                mAdapter.notifyDataSetChanged();
+                }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grouplist, container, false);
+        View root = inflater.inflate(R.layout.fragment_grouplist, container, false);
+        Button AddGroupBtn = (Button)root.findViewById(R.id.GroupAddBtn);
+        ListView GroupList = (ListView)root.findViewById(R.id.grouplistview);
+        final TextView addGroupText = (TextView)root.findViewById(R.id.GroupTxtAddGroup);
+        GroupList.setAdapter(mAdapter);
+        GroupList.setClickable(true);
+        GroupList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String name = groups.get(position).getName();
+                String groupId = ids.get(position);
+                ((ChatActivity)getActivity()).StartChat(name, groupId);
+            }
+        });
+        AddGroupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String groupname = addGroupText.getText().toString();
+                if(!groupname.equals(""))
+                {
+                    Group grp = new Group();
+                    grp.setName(groupname);
+                    mFirebase.push().setValue(grp, new Firebase.CompletionListener() {
+                        @Override
+                        public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                        if(firebaseError != null)
+                        {
+                            Dialog dialog = new Dialog(getActivity());
+                            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                            dialog.setContentView(R.layout.dialoglayout);
+                            TextView text =  (TextView)dialog.findViewById(R.id.dialogText);
+                            text.setText("Error:\n" + firebaseError.toString());
+                            dialog.show();
+                        }
+                            else
+                        {
+                            TextView addGroupText = (TextView)getActivity().findViewById(R.id.GroupTxtAddGroup);
+                            addGroupText.setText("");
+                            addGroupText.setSelected(false);
+                        }
+                        }
+                    });
+                }
+            }
+        });
+        return root;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        final ListView lv = (ListView)getView().findViewById(R.id.grouplistview);
-        List<String> arraylist = new ArrayList<String>();
-        arraylist.add("foo");
-        arraylist.add("bar");
-        arraylist.add("foo");
-        arraylist.add("bar");
-        arraylist.add("foo");
-        arraylist.add("bar");
-        arraylist.add("foo");
-        arraylist.add("bar");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_list_item_1, arraylist);
-        lv.setAdapter(arrayAdapter);
-        lv.setClickable(true);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-
-                Object o = lv.getItemAtPosition(position);
-                ChatActivity ch = (ChatActivity)getActivity();
-                ch.ChangeScreen(new ChatFragment(), R.id.chatfragment, R.layout.fragment_chat);
-
-            }
-        });
         super.onViewCreated(view, savedInstanceState);
     }
 

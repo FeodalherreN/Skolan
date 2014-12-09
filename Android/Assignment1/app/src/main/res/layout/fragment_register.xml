@@ -17,26 +17,18 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtregusername"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:hint="Username" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/txtregpassword"
         android:hint="Password"
-        android:layout_below="@+id/txtregusername"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtregemail"
         android:hint="Email"
-        android:layout_below="@+id/txtregpassword"
+        android:layout_below="@+id/textView"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -44,7 +36,6 @@
         android:layout_height="wrap_content"
         android:text="Registrera"
         android:id="@+id/btnregister"
-        android:onClick="RegRegClicked"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

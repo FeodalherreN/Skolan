@@ -1,0 +1,20 @@
+BITMAP EXTRACTOR, Version 2.3
+Copyright (C) 1998-2004 Zexer Research
+
+ORDERING INFORMATION
+
+
+Bitmap Extractor is not freeware. You are entitled to evaluate the
+program free of charge for 30 days. After that you must register or
+stop using it. The registration information and prices are available
+at http://www.zexersoft.com/purchase.html
+
+By purchasing Bitmap Extractor you are not only paying for what you
+have, but also investing in the future. Once you become a registered
+user, all future versions of this software will be available to you
+free of charge. Registration also entitles you to receive lifelong
+free technical support via e-mail.
+
+Before you register, make sure you have the latest version of the
+software. The latest version is always accessible at
+http://www.zexersoft.com/download.html

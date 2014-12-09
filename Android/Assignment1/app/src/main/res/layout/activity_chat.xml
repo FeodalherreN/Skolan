@@ -3,7 +3,11 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/chatactivty_main_container"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.markus.app1.ChatActivity">
-
+    <FrameLayout
+        android:id="@+id/chatcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

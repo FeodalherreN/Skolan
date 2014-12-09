@@ -2,22 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:id="@+id/chatfragment"
     android:layout_height="match_parent" tools:context="com.example.markus.app1.ChatFragment">
-
-
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
+        android:id="@+id/msgTextbox"
+        android:layout_weight="1"
+        android:text=""
+        android:hint="Message..."
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Message..." />
-
+        android:layout_alignParentStart="true" />
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Send"
+        android:id="@+id/sendbtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/chatList"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/editText4" />
+        android:layout_above="@+id/msgTextbox" />
 </RelativeLayout>

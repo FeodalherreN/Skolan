@@ -22,6 +22,8 @@ import com.firebase.client.FirebaseError;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
+import static com.example.markus.app1.R.layout.activity_main;
+
 
 public class MainActivity extends Activity
         implements RegisterFragment.OnFragmentInteractionListener,
@@ -33,11 +35,12 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
+        setContentView(R.layout.activity_main);
         mFirebase = new Firebase("https://brilliant-heat-3941.firebaseio.com/");
         if (savedInstanceState == null)
         {
-            setTitle("ChattmästarN");
-            ChangeScreen(new Login(), R.id.loginfragment, R.layout.fragment_login);
+            setTitle("MacChatt");
+            ChangeScreen(new Login());
         }
     }
 
@@ -46,33 +49,12 @@ public class MainActivity extends Activity
 
     @Override
     public void onBackPressed() {
-        ChangeScreen(new Login(), R.id.loginfragment, R.layout.fragment_login);
+        ChangeScreen(new Login());
     }
 
     public void RegisterBtnClicked(View view)
     {
-        ChangeScreen(new RegisterFragment(), R.id.registerfragment, R.layout.fragment_register);
-    }
-    public void RegRegClicked(View view)
-    {
-        final EditText username = (EditText)findViewById(R.id.txtregusername);
-        final EditText password = (EditText)findViewById(R.id.txtregpassword);
-        final EditText email = (EditText)findViewById(R.id.txtregemail);
-        mFirebase.createUser(email.getText().toString(),password.getText().toString(), new Firebase.ResultHandler() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(getApplicationContext(),"Registration successful", Toast.LENGTH_SHORT).show();
-                ChangeScreen(new Login(), R.id.loginfragment, R.layout.fragment_login);
-            }
-
-            @Override
-            public void onError(FirebaseError firebaseError) {
-                Toast.makeText(getApplicationContext(),"Registration failed, try again.", Toast.LENGTH_SHORT).show();
-                username.setText("");
-                password.setText("");
-                email.setText("");
-            }
-        });
+        ChangeScreen(new RegisterFragment());
     }
     public void LoginClicked(View view)
     {
@@ -82,6 +64,7 @@ public class MainActivity extends Activity
                     @Override
                     public void onAuthenticated(AuthData authData) {
                         System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+                        CurrentUser.setCurrentUser((String) authData.getProviderData().get("email"));
                         Intent i = new Intent(getApplicationContext(), ChatActivity.class);
                         startActivity(i);
                     }
@@ -94,7 +77,7 @@ public class MainActivity extends Activity
     }
     public void AboutPressed(View view)
     {
-        ChangeScreen(new AboutFragment(), R.id.aboutfragment, R.layout.fragment_about);
+        ChangeScreen(new AboutFragment());
     }
 
     @Override
@@ -118,11 +101,10 @@ public class MainActivity extends Activity
 
         return super.onOptionsItemSelected(item);
     }
-    public void ChangeScreen(Fragment frag, int id, int layout)
+    public void ChangeScreen(Fragment frag)
     {
-        this.setContentView(layout);
         getFragmentManager().beginTransaction()
-                .replace(id, frag)
+                .replace(R.id.container, frag)
                 .commit();
     }
 }

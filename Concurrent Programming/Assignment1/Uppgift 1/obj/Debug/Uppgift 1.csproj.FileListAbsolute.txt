@@ -16,3 +16,4 @@ C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift_1.Properties.Resou
 C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\obj\Debug\Uppgift 1.csproj.GenerateResource.Cache
 C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.exe
 C:\Users\Markus\Desktop\Uppgift 1\Uppgift 1\bin\Debug\Uppgift 1.pdb
+C:\Users\Markus Olsson\Documents\GitHub\Skolan\Concurrent Programming\Assignment1\Uppgift 1\bin\Debug\Uppgift 1.exe.config

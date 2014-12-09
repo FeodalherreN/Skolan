@@ -2,6 +2,7 @@ package com.example.markus.app1;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,15 +22,18 @@ implements Grouplist.OnFragmentInteractionListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("ChattMästarN");
-        ChangeScreen(new Grouplist(), R.id.grouplistfragment, R.layout.fragment_grouplist);
+        setTitle("MacChatt");
+        setContentView(R.layout.activity_chat);
+        if(savedInstanceState == null) {
+            ChangeScreen(new Grouplist());
+        }
     }
     public void onFragmentInteraction(Uri uri){
     }
 
     @Override
     public void onBackPressed() {
-        ChangeScreen(new Grouplist(), R.id.grouplistfragment, R.layout.fragment_grouplist);
+        ChangeScreen(new Grouplist());
     }
 
     @Override
@@ -53,11 +57,17 @@ implements Grouplist.OnFragmentInteractionListener,
 
         return super.onOptionsItemSelected(item);
     }
-    public void ChangeScreen(Fragment frag, int id, int layout)
+    public void ChangeScreen(Fragment frag)
     {
-        this.setContentView(layout);
         getFragmentManager().beginTransaction()
-                .replace(id, frag)
+                .replace(R.id.chatcontainer, frag)
                 .commit();
+    }
+    public void StartChat(String groupName, String groupId)
+    {
+        ChatFragment fragment = ChatFragment.newInstance(groupName, groupId);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.chatcontainer, fragment);
+        transaction.commit();
     }
 }
