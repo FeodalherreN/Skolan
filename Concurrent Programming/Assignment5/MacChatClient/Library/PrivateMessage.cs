@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 
 namespace Library
 {
+    /// <summary>
+    /// This class represents a privatemessage.
+    /// </summary>
     [Serializable]
     public class PrivateMessage
     {
-        private string ivMessage;
-        private DateTime ivTime;
-        private User ivSender;
-        private User ivReciever;
+        private string ivMessage; //The message itself.
+        private DateTime ivTime; //What time
+        private User ivSender; //The sender
+        private User ivReciever; //The reciever
 
         public PrivateMessage()
         {
@@ -29,22 +32,36 @@ namespace Library
             this.ivReciever = piReciever;
         }
 
+        /// <summary>
+        /// A property for the message.
+        /// </summary>
         public string MessageText
         {
             get { return ivMessage; }
             set { ivMessage = value; }
         }
 
+        /// <summary>
+        /// A property for the time sent.
+        /// </summary>
         public DateTime Time
         {
             get { return ivTime; }
             set { ivTime = value; }
         }
+        
+        /// <summary>
+        /// A property for the senderuser.
+        /// </summary>
         public User Sender
         {
             get { return ivSender; }
             set { ivSender = value; }
         }
+
+        /// <summary>
+        /// A property for the reciver user.
+        /// </summary>
         public User Reciever
         {
             get { return ivReciever; }

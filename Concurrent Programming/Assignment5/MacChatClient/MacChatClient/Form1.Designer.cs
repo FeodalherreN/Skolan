@@ -37,20 +37,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listUsers = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listMessages
             // 
             this.listMessages.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.listMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.listMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listMessages.ForeColor = System.Drawing.Color.Lime;
             this.listMessages.FormattingEnabled = true;
-            this.listMessages.ItemHeight = 20;
+            this.listMessages.ItemHeight = 16;
             this.listMessages.Location = new System.Drawing.Point(13, 13);
             this.listMessages.Name = "listMessages";
-            this.listMessages.Size = new System.Drawing.Size(465, 444);
+            this.listMessages.Size = new System.Drawing.Size(465, 436);
             this.listMessages.TabIndex = 0;
             // 
             // btnSend
@@ -118,7 +117,7 @@
             this.listUsers.FormattingEnabled = true;
             this.listUsers.Location = new System.Drawing.Point(485, 157);
             this.listUsers.Name = "listUsers";
-            this.listUsers.Size = new System.Drawing.Size(159, 251);
+            this.listUsers.Size = new System.Drawing.Size(159, 290);
             this.listUsers.TabIndex = 4;
             // 
             // label2
@@ -130,23 +129,11 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Users Online";
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(525, 414);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 532);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listUsers);
             this.Controls.Add(this.groupBox1);
@@ -173,7 +160,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listUsers;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnUpdate;
     }
 }
 

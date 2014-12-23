@@ -11,20 +11,13 @@ namespace MacServer
 {
     class Program
     {
-        private static string ip = "";
-        private static int port = 0;
-
         static void Main(string[] args)
         {
-            Console.Title = "Chattserver";
-            //Console.WriteLine("Specify your ip: ");
-            //ip = Console.ReadLine();
-            //Console.WriteLine("Specify your port: ");
-            //Console.ReadLine();
-            ClientListener listener = new ClientListener();
+            Console.Title = "Chattserver"; //Sets the consoletitle
+            ClientListener listener = new ClientListener(); //New instance of Clientlistener
             Console.WriteLine("Starting server...");
             Console.WriteLine("Press x to exit");
-            while(Console.ReadLine() != "x")
+            while(Console.ReadLine() != "x") //Aslong as the user doesnt press x, dont close.
             {
 
             }

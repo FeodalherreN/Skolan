@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Library
 {
+    /// <summary>
+    /// This class represents a connectionattempt from a user.
+    /// It is used of the server to register the user in the system.
+    /// </summary>
     [Serializable]
     public class ConnectAttempt
     {
@@ -19,6 +23,9 @@ namespace Library
         {
             user = new User(Username);
         }
+        /// <summary>
+        /// A property to set the user connecting.
+        /// </summary>
         public User User
         {
             get { return user; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library
 {
+    /// <summary>
+    /// This class represents a lobbymessage.
+    /// </summary>
     [Serializable]
     public class LobbyMessage
     {
@@ -23,18 +26,28 @@ namespace Library
             this.ivTime = piTime;
             this.ivSender = piSender;
         }
-
+        
+        /// <summary>
+        /// Property for the message.
+        /// </summary>
         public string MessageText
         {
             get { return ivMessage; }
             set { ivMessage = value; }
         }
 
+        /// <summary>
+        /// Property for the time sent.
+        /// </summary>
         public DateTime Time
         {
             get { return ivTime; }
             set { ivTime = value; }
         }
+
+        /// <summary>
+        /// Property for the sender.
+        /// </summary>
         public User Sender
         {
             get { return ivSender; }

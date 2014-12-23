@@ -10,12 +10,19 @@ using Library;
 
 namespace Library
 {
+    /// <summary>
+    /// Static values and methods used in the program.
+    /// </summary>
     public static class StaticValuesAndMethods
     {
-        public static readonly int port = 9999;
-        public static readonly string ip = "31.211.243.89";
+        public static readonly int port = 9999; //portnumber
+        public static readonly string ip = "31.211.243.89"; //ip adress
 
-
+        /// <summary>
+        /// This method converts an object to a byte array
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static byte[] ObjectToByteArray(Object obj)
         {
             if (obj == null)
@@ -27,6 +34,11 @@ namespace Library
                 return ms.ToArray();
             }
         }
+        /// <summary>
+        /// This method converts a bytearray to an Object.
+        /// </summary>
+        /// <param name="arrBytes"></param>
+        /// <returns></returns>
         public static Object ByteArrayToObject(byte[] arrBytes)
         {
             MemoryStream memStream = new MemoryStream();
