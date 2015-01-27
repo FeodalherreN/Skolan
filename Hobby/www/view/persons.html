@@ -1,0 +1,21 @@
+</div>
+<div class="jumbotron">Users</br></br>
+<li ng-repeat="person in persons | filter: search">
+        <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{person.name}}</h3>
+  </div>
+  <div class="panel-body">
+    Age: {{person.age}} </br>
+    Gender: {{person.gender}} </br>
+    Email: {{person.email}}</br>
+    Address: {{person.address}}</br>
+    Tags:
+    <div class="btn-group" role="group" aria-label="..." ng-repeat="tag in person.tags">
+    <button type="button" class="btn btn-success">{{tag}}</button>
+    </div>
+  </div>
+</div>
+       </br></li>
+     </div>
+     </div>
