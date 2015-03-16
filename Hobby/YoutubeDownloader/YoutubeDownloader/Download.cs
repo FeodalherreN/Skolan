@@ -19,10 +19,15 @@ namespace YoutubeDownloader
     {
         public void start(string id)
         {
-            using (WebClient client = new WebClient()) // WebClient class inherits IDisposable
-            {
-                string htmlCode = client.DownloadString("https://www.youtube.com/watch?v=" + id);
-            }
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "youtube-dl.exe";
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
+            startInfo.Arguments = "--extract-audio " + "https://www.youtube.com/watch?v=" + id;
+            process.StartInfo = startInfo;
+            process.Start();
         }
     }
 }

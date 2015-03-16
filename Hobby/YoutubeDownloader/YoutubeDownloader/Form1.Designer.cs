@@ -39,7 +39,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(375, 10);
+            this.btnSearch.Location = new System.Drawing.Point(363, 10);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(25, 13);
+            this.txtSearch.Location = new System.Drawing.Point(13, 13);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(344, 20);
             this.txtSearch.TabIndex = 1;
@@ -93,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 552);
+            this.ClientSize = new System.Drawing.Size(759, 532);
             this.Controls.Add(this.lblNrOfResults);
             this.Controls.Add(this.BtnDownload);
             this.Controls.Add(this.picThumb);
@@ -101,7 +101,7 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnSearch);
             this.Name = "Form1";
-            this.Text = "McYoutubeDownloader";
+            this.Text = "Markus nedladdningsprogram";
             ((System.ComponentModel.ISupportInitialize)(this.picThumb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
